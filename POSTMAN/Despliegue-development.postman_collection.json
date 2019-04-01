@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "87020cd8-b330-4e4a-a9db-6ff8c041e949",
+		"name": "Despliegue-development",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tripRequest",
+			"item": [
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"list_requirements\": [\"mayor de edad\"],\r\n    \"date_start\": \"2019-11-11T23:00:00.000Z\",\r\n    \"date_end\": \"2019-12-11T23:00:00.000Z\",\r\n    \"manager\": \"5c6852f34112510ff0a5dbb3\",\r\n    \"description\": \"Viaje a Alemania\",\r\n    \"price\" : 130,\r\n    \"title\": \"Alemania\",\r\n    \"picture\": [{\r\n              \"Buffer\":\"awedfcrfvaesfvefdvsfdv1aerdfvadf64vAadf8bv4gs6d4bs6gv15fs1v6efef\",\r\n               \"contentType\":\"jpg\"\r\n               }],\r\n    \"stage\": [\r\n    \t{\r\n    \t\t\"title\":\"Munich\",\r\n    \t\t\"description\":\"Stage Munich\",\r\n    \t\t\"price\":50\r\n    \t},\r\n    \t{\r\n    \t\t\r\n    \t\t\"title\":\"Berlin\",\r\n    \t\t\"description\":\"Stage Berlin\",\r\n    \t\t\"price\":80\r\n    \t}\r\n    \t\r\n    ]\r\n  \r\n}\r\n   "
+						},
+						"url": {
+							"raw": "http://development.do1819.02.com/v1/trips",
+							"protocol": "http",
+							"host": [
+								"development",
+								"do1819",
+								"02",
+								"com"
+							],
+							"path": [
+								"v1",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://development.do1819.02.com/v1/trips",
+							"protocol": "http",
+							"host": [
+								"development",
+								"do1819",
+								"02",
+								"com"
+							],
+							"path": [
+								"v1",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
