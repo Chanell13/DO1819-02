@@ -97,7 +97,7 @@ function infoTripbyManager(callback) {
     var pipiline = [
         {
             $group: {
-                _id: "$actor",
+                _id: "$manager",
                 tripsactor: { $sum: 1 }
             }
         },

@@ -5,7 +5,7 @@ Mostrar la siguiente información:
 db.trips.aggregate
 ([
 			{
-				$group: { _id: "$actor", tripsactor: { $sum: 1 } }
+				$group: { _id: "$manager", tripsactor: { $sum: 1 } }
 			},
 			{
 				$group: { 

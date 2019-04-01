@@ -1,6 +1,7 @@
 'use strict';
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+const moment = require('moment');
 const dateFormat = require('dateformat'),
     generate = require('nanoid/generate');
 
@@ -62,11 +63,15 @@ var TripSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ['CREATED', 'PUBLISHED', 'STARTED', 'ENDED', 'CANCELLED'],
+        enum: ['CREATED', 'PUBLISHED', 'CANCELLED'],
         default: 'CREATED'
     },
     date_start: {
         type: Date,
+        validate: [
+            startDateValidator,
+            'Start date must be greater than Today date'
+        ],
         required: 'Kindly enter the start of the Trip'
     },
     date_end: {
@@ -113,6 +118,11 @@ function dateValidation(value) {
 
 function validator(v) {
     return /\d{6}-\w{4}/.test(v);
+}
+
+function startDateValidator(startDate) {
+    let now = moment();
+    return now <= startDate;
 }
 
 TripSchema.index({ ticker: 'text', title: 'text', description: 'text' });

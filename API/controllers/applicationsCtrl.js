@@ -21,6 +21,7 @@ exports.create_an_application = function (req, res) {
 
 exports.search_applications = function (req, res) {
     //Check if status param exists (status: req.query.status)  
+
     Application.find(
         { status: req.params.status },
         function (err, applications) {
@@ -36,17 +37,43 @@ exports.search_applications = function (req, res) {
     // res.send('Application returned from the application search');
 };
 
+exports.list_applications = function (req, res) {
+    //Check if status param exists (status: req.query.status)  
+    Application.find(
+        {},
+        function (err, applications) {
+            if (err) {
+                res.send(err);
+            }
+            else {
+                res.json(applications);
+            }
+        });
 
-exports.update_an_application = function (req, res) {
-    console.log((req.body));
+    console.log('Searching an application depending on params');
+    // res.send('Application returned from the application search');
+};
+
+
+exports.update_status_application = function (req, res) {
+
+    var reason = (req.body.reject_reason) ? req.body.reject_reason : '';
+
+    if (req.body.status == 'REJECTED' && reason == '') {
+        res.status(400).json({ message: 'Missing value Reject reason' });
+        return;
+    }
+
     Application.findOneAndUpdate(
         { _id: req.params._id },
         req.body,
         { new: true },
         function (err, application) {
+
             if (err) {
                 res.send(err);
             }
+
             else {
                 res.json(application);
             }
@@ -67,6 +94,10 @@ exports.delete_an_application = function (req, res) {
 };
 
 
-exports.change_status = function (req, res) {
-   //PUT -- "CHANGE STATUS FOR MANAGER FROM PENDING TO REJECTED OR FROM PENDING TO DUE"
+exports.group_status = function (req, res) {
+    //GET -- "List and display the application that he or she's made , grouped by status"
+    return res;
 };
+
+
+

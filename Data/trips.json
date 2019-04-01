@@ -10,7 +10,7 @@
     "description" : "Viaje a Portugal",
 	"price" : NumberInt(45),	
     "title" : "Portugal",
-    "actor" : ObjectId("5c6852f34112510ff0a5dbb3"), 
+    "manager" : ObjectId("5c6852f34112510ff0a5dbb3"), 
     "picture" : [
         {
             "_id" : ObjectId("5c687760c42f2d22c08cd850"), 
@@ -44,7 +44,7 @@
     "description" : "Viaje a España",
 	"price" : NumberInt(80),	
     "title" : "España", 
-    "actor" : ObjectId("5c6852f34112510ff0a5dbb3"), 
+    "manager" : ObjectId("5c6852f34112510ff0a5dbb3"), 
     "picture" : [
         {
             "_id" : ObjectId("5c79499a0e2ded2ff8fbb5e6"), 
@@ -84,7 +84,7 @@
     "description" : "Viaje a Francia",
 	"price" : NumberInt(80),
     "title" : "Francia", 
-    "actor" : ObjectId("5c6852f34112510ff0a5dbb3"), 
+    "manager" : ObjectId("5c6852f34112510ff0a5dbb3"), 
     "picture" : [
         {
             "_id" : ObjectId("5c687760c42f2d22c08cd850"), 
@@ -118,7 +118,7 @@
     "description" : "Viaje a Canada",
 	"price" : NumberInt(220),
     "title" : "Canada",
-    "actor" : ObjectId("5c6852f34112510ff0a5dbb3"), 
+    "manager" : ObjectId("5c6852f34112510ff0a5dbb3"), 
     "picture" : [
         {
             "_id" : ObjectId("5c794b1f0e2ded2ff8fbb5ee"), 
@@ -158,7 +158,7 @@
     "description" : "Viaje a Belgica",
 	"price" : NumberInt(70),	
     "title" : "Belgica",
-    "actor" : ObjectId("5c6852f34112510ff0a5dbb3"), 
+    "manager" : ObjectId("5c6852f34112510ff0a5dbb3"), 
     "picture" : [
         {
             "_id" : ObjectId("5c794b620e2ded2ff8fbb5f2"), 
@@ -191,7 +191,7 @@
     "description" : "Viaje a Brasil",
 	"price" : NumberInt(60),
     "title" : "Brazil", 
-    "actor" : ObjectId("5c6853124112510ff0a5dbb4"), 
+    "manager" : ObjectId("5c6853124112510ff0a5dbb4"), 
     "picture" : [
         {
             "_id" : ObjectId("5c7bfd75af8be91c9cc492d3"), 
@@ -224,7 +224,7 @@
     "description" : "Viaje a Italia",
 	"price" : NumberInt(50),	
     "title" : "Italia",
-    "actor" : ObjectId("5c6853124112510ff0a5dbb4"), 
+    "manager" : ObjectId("5c6853124112510ff0a5dbb4"), 
     "picture" : [
         {
             "_id" : ObjectId("5c687760c42f2d22c08cd850"), 

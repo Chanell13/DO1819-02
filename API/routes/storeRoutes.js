@@ -6,7 +6,6 @@ module.exports = function(app) {
 
   /**
 	 * Bad option: Put a large json with documents from a file into a collection of mongoDB
-	 *
 	 * @section store
 	 * @type post
 	 * @url /v1/store/insertMany
@@ -20,7 +19,6 @@ module.exports = function(app) {
 
   /**
 	 * Put a large json with documents from a file into a collection of mongoDB
-	 *
 	 * @section store
 	 * @type post
 	 * @url /v1/store/fs
@@ -34,10 +32,8 @@ module.exports = function(app) {
   app.route('/v1/store/fs')
 		.post(store.store_json_fs);
 
-
   /**
 	 * Put a large json with documents from an URL into a collection of mongoDB
-	 *
 	 * @section store
 	 * @type post
 	 * @url /v1/store/url
