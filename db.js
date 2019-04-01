@@ -7,11 +7,15 @@ require('./API/model/applicationsModel'),
 
 var mongoose = require('mongoose');
 
-// MongoDB URI building
-var mongoDBUser = (process.env.mongoDBHostname === "mongo" || process.env.mongoDBHostname === '172.17.0.2') ? ""
+// MongoDB URI buildingmongodb-svc
+var mongoDBUser = (process.env.mongoDBHostname === "mongo"
+    || process.env.mongoDBHostname === '172.17.0.2'
+    || process.env.mongoDBHostname === 'mongodb-svc') ? ""
     : process.env.mongoDBUser || "myAdmin";
 
-var mongoDBPass = (process.env.mongoDBHostname === "mongo" || process.env.mongoDBHostname === '172.17.0.2') ? ""
+var mongoDBPass = (process.env.mongoDBHostname === "mongo"
+    || process.env.mongoDBHostname === '172.17.0.2'
+    || process.env.mongoDBHostname === 'mongodb-svc') ? ""
     : process.env.mongoDBPass || "myAdminPassword";
 
 var mongoDBCredentials =
