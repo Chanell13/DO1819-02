@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c59ff90a-c45c-4b70-870a-87670da07e85",
+		"_postman_id": "f18fefc1-3471-4bf6-ab73-203b352c08d1",
 		"name": "ACME-EXPLORER",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -114,7 +114,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"list_requirements\": [\"mayor de edad\"],\r\n    \"date_start\": \"2010-11-11T23:00:00.000Z\",\r\n    \"date_end\": \"2011-12-11T23:00:00.000Z\",\r\n    \"manager\": \"5c6852f34112510ff0a5dbb3\",\r\n    \"description\": \"Viaje a Alemania\",\r\n    \"price\" : 0,\r\n    \"title\": \"Alemania\",\r\n    \"picture\": [{\r\n              \"Buffer\":\"awedfcrfvaesfvefdvsfdv1aerdfvadf64vAadf8bv4gs6d4bs6gv15fs1v6efef\",\r\n               \"contentType\":\"jpg\"\r\n               }],\r\n    \"stage\": [\r\n    \t{\r\n    \t\t\"title\":\"Munich\",\r\n    \t\t\"description\":\"Stage Munich\",\r\n    \t\t\"price\":50\r\n    \t},\r\n    \t{\r\n    \t\t\r\n    \t\t\"title\":\"Berlin\",\r\n    \t\t\"description\":\"Stage Berlin\",\r\n    \t\t\"price\":80\r\n    \t}\r\n    \t\r\n    ]\r\n  \r\n}\r\n   "
+							"raw": "\r\n{\r\n    \"list_requirements\": [\"mayor de edad\"],\r\n    \"date_start\": \"2019-11-11T23:00:00.000Z\",\r\n    \"date_end\": \"2019-12-11T23:00:00.000Z\",\r\n    \"manager\": \"5c6852f34112510ff0a5dbb3\",\r\n    \"description\": \"Viaje a Alemania\",\r\n    \"price\" : 0,\r\n    \"title\": \"Alemania\",\r\n    \"picture\": [{\r\n              \"Buffer\":\"awedfcrfvaesfvefdvsfdv1aerdfvadf64vAadf8bv4gs6d4bs6gv15fs1v6efef\",\r\n               \"contentType\":\"jpg\"\r\n               }],\r\n    \"stage\": [\r\n    \t{\r\n    \t\t\"title\":\"Munich\",\r\n    \t\t\"description\":\"Stage Munich\",\r\n    \t\t\"price\":50\r\n    \t},\r\n    \t{\r\n    \t\t\r\n    \t\t\"title\":\"Berlin\",\r\n    \t\t\"description\":\"Stage Berlin\",\r\n    \t\t\"price\":80\r\n    \t}\r\n    \t\r\n    ]\r\n  \r\n}\r\n   "
 						},
 						"url": {
 							"raw": "http://localhost:8080/v1/trips",
@@ -132,7 +132,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete",
+					"name": "Delete withouth applications and not start date",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -141,7 +141,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/v1/trips/ticker",
+							"raw": "http://localhost:8080/v1/trips/5ca11705f9afe234d454f95d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -150,7 +150,7 @@
 							"path": [
 								"v1",
 								"trips",
-								"ticker"
+								"5ca11705f9afe234d454f95d"
 							]
 						}
 					},
@@ -237,6 +237,64 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete with applications",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/trips/5ca11921f9afe234d454f961",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"trips",
+								"5ca11921f9afe234d454f961"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT status trip",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\":\"CANCELLED\",\n\t\"cancelled_reason\":\"Trip canceled due to lack of applicants\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/trips/190331-KCXW/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"trips",
+								"190331-KCXW",
+								"status"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -244,7 +302,7 @@
 			"name": "applicationRequest",
 			"item": [
 				{
-					"name": "Get",
+					"name": "Get by status",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -253,7 +311,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/v1/applications/status",
+							"raw": "http://localhost:8080/v1/applications/PENDING",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -262,7 +320,31 @@
 							"path": [
 								"v1",
 								"applications",
-								"status"
+								"PENDING"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/applications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"applications"
 							]
 						}
 					},
@@ -282,7 +364,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n   { \r\n   \t\"trip\": \"5c68768dc42f2d22c08cd84b\",\r\n   \t\"comment\":\"Quiero participar en el viaje\"\r\n   \r\n   \r\n   \t\r\n   }\r\n    "
+							"raw": "\r\n   {\r\n    \"explorer\":\"5c6852f34112510ff0a5dbb3\",\r\n   \t\"trip\": \"5c7949670e2ded2ff8fbb5e1\",\r\n   \t\"comment\":\"Quiero participar en el viaje\"\r\n   }\r\n    "
 						},
 						"url": {
 							"raw": "http://localhost:8080/v1/applications",
@@ -300,7 +382,7 @@
 					"response": []
 				},
 				{
-					"name": "Put",
+					"name": "Put Status without rejected reason",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -313,10 +395,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\r\n    \"status\": \"PENDING\",\r\n    \"if_paid\": false,\r\n    \"validated\": false,\r\n    \"trip\": \"5c68768dc42f2d22c08cd84b\",\r\n    \"comment\": \" NO Quiero participar en el viaje\"\r\n   \r\n}\r\n   \r\n    "
+							"raw": "  {\r\n    \"status\": \"REJECTED\"\r\n   \r\n}\r\n   \r\n    "
 						},
 						"url": {
-							"raw": "http://localhost:8080/v1/applications/5c687d6eab350321f0c27ca8",
+							"raw": "http://localhost:8080/v1/applications/5ca0ed1e11a42a178014cf9f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -325,7 +407,89 @@
 							"path": [
 								"v1",
 								"applications",
-								"5c687d6eab350321f0c27ca8"
+								"5ca0ed1e11a42a178014cf9f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put Status with rejected reason",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"status\": \"REJECTED\",\r\n    \"reject_reason\": \"el viaje es para mayores de edad\" \r\n}\r\n   \r\n    "
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/applications/5ca0ed1e11a42a178014cf9f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"applications",
+								"5ca0ed1e11a42a178014cf9f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "paid trip.",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "v1/trips/:_id/applications/:applicationId/pay",
+							"host": [
+								"v1"
+							],
+							"path": [
+								"trips",
+								":_id",
+								"applications",
+								":applicationId",
+								"pay"
+							],
+							"variable": [
+								{
+									"key": "_id",
+									"value": ""
+								},
+								{
+									"key": "applicationId",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -346,7 +510,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:8080/v1/datawarehouse?rebuildPeriod=*/35 * * * * *",
+							"raw": "localhost:8080/v1/datawarehouse?rebuildPeriod=*/15 * * * * *",
 							"host": [
 								"localhost"
 							],
@@ -358,7 +522,7 @@
 							"query": [
 								{
 									"key": "rebuildPeriod",
-									"value": "*/35 * * * * *"
+									"value": "*/15 * * * * *"
 								}
 							]
 						}
