@@ -4,8 +4,8 @@ var express = require('express'),
     cors = require('cors'),
     app = express();
 
-var admin = (process.env.mongoDBHostname === "mongo" || process.env.mongoDBHostname === '172.17.0.2') ? '' : require('firebase-admin');
-var serviceAccount = (process.env.mongoDBHostname === "mongo" || process.env.mongoDBHostname === '172.17.0.2') ? ''
+var admin = (process.env.mongoDBHostname === "mongo" || process.env.mongoDBHostname === 'mongodb-svc' || process.env.mongoDBHostname === '172.17.0.2') ? '' : require('firebase-admin');
+var serviceAccount = (process.env.mongoDBHostname === "mongo" || process.env.mongoDBHostname === 'mongodb-svc' || process.env.mongoDBHostname === '172.17.0.2') ? ''
     : require('./acme-explorer-1176d-firebase-adminsdk-hpy9v-2636ee199c.json');
 
 app.use(cors());

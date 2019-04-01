@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "2473fe54-b2c2-4ec1-b27d-65636414c46a",
+		"name": "Despliegue-production",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tripRequest",
+			"item": [
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"list_requirements\": [\"Experiencia en escalada\"],\r\n    \"date_start\": \"2019-11-11T23:00:00.000Z\",\r\n    \"date_end\": \"2019-12-11T23:00:00.000Z\",\r\n    \"manager\": \"5c6852f34112510ff0a5dbb3\",\r\n    \"description\": \"Viaje al Monte Everest\",\r\n    \"price\" : 810,\r\n    \"title\": \"Nepal\",\r\n    \"picture\": [{\r\n              \"Buffer\":\"awedfcrfvaesfvefdvsfdv1aerdfvadf64vAadf8bv4gs6d4bs6gv15fs1v6efef\",\r\n               \"contentType\":\"jpg\"\r\n               }],\r\n    \"stage\": [\r\n    \t{\r\n    \t\t\"title\":\"Stage 1\",\r\n    \t\t\"description\":\"Llegar a una altura de 4000 metros\",\r\n    \t\t\"price\":250\r\n    \t},\r\n    \t{\r\n    \t\t\r\n    \t\t\"title\":\"Stage 2\",\r\n    \t\t\"description\":\"Llegar a la cima del everest a 8.848 metros\",\r\n    \t\t\"price\":560\r\n    \t}\r\n    \t\r\n    ]\r\n  \r\n}\r\n   "
+						},
+						"url": {
+							"raw": "http://do1819.02.com/v1/trips",
+							"protocol": "http",
+							"host": [
+								"do1819",
+								"02",
+								"com"
+							],
+							"path": [
+								"v1",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://do1819.02.com/v1/trips",
+							"protocol": "http",
+							"host": [
+								"do1819",
+								"02",
+								"com"
+							],
+							"path": [
+								"v1",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
