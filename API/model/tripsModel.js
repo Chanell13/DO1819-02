@@ -24,6 +24,21 @@ var stagechema = new Schema({
     }
 }, { strict: false });
 
+/*var categoryschema = new Schema({
+    name: {
+        type: String,
+        required: 'Kindly enter the title of the Stage'
+    },
+    description: {
+        type: String,
+        required: 'Kindly enter the description of the Stage'
+    },
+    picture: [{
+        data: Buffer,
+        contentType: String
+    }]
+}, { strict: false });*/
+
 var TripSchema = new Schema({
     manager: {
         type: mongoose.ObjectId,
@@ -39,6 +54,12 @@ var TripSchema = new Schema({
             validator,
             'ticker is not valid!, Pattern("\d(6)-\w(4)")'
         ]
+    },
+
+    category: {
+        type: mongoose.ObjectId,
+        ref: 'Category',
+        required: 'Kindly enter a valid category of trip'
     },
     cancelled_reason: {
         type: String
@@ -87,6 +108,7 @@ var TripSchema = new Schema({
         contentType: String
     }],
     stage: [stagechema],
+    //category: [categoryschema],
     created: {
         type: Date,
         default: Date.now
@@ -131,3 +153,4 @@ TripSchema.index({ cancelationMoment: 1 });
 
 module.exports = mongoose.model('Trips', TripSchema);
 module.exports = mongoose.model('Stages', stagechema);
+//module.exports = mongoose.model('Category', categoryschema);

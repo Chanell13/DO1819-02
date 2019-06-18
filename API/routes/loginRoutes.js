@@ -10,6 +10,6 @@ module.exports = function(app) {
 	 * @param {string} email
    * @param {string} password
 	*/
-  app.route('/v1/login/')
+  app.route('/v1/login/')//?email=xxxx&pass=zzzz
     .get(actors.login_an_actor);
 };

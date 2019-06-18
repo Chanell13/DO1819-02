@@ -77,7 +77,7 @@ ActorSchema.methods.verifyPassword = function (password, cb) {
     bcrypt.compare(password, this.password, function (err, isMatch) {
         console.log('verifying password in actorModel: ' + password);
         if (err) return cb(err);
-        console.log('iMatch: ' + isMatch);
+        console.log('isMatch: ' + isMatch);
         cb(null, isMatch);
     });
 };

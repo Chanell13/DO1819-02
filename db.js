@@ -1,9 +1,11 @@
 require('./API/model/applicationsModel'),
     require('./API/model/tripsModel'),
+    require('./API/model/categoryModel'),
     require('./API/model/actorsModel'),
     require('./API/model/bannerModel'),
     require('./API/model/finderModel'),
     require('./API/model/dataWareHouseModel');
+    
 
 var mongoose = require('mongoose');
 

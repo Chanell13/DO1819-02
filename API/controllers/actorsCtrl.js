@@ -4,6 +4,8 @@ var mongoose = require('mongoose'),
   admin = require('firebase-admin'),
   Actor = mongoose.model('Actors');
 var authController = require('./authCtrl');
+
+
 exports.create_an_actor = function (req, res) {
   console.log((req.body));
   var new_actor = new Actor(req.body);
@@ -60,7 +62,22 @@ exports.update_an_actor_v2 = function (req, res) {
       if (actor.role.includes('EXPLORER') || actor.role.includes('MANAGER') || actor.role.includes('SPONSOR')) {
         var authenticatedUserId = await authController.getUserId(idToken);
         if (authenticatedUserId == req.params.actorId) {
-          Actor.findOneAndUpdate({ _id: req.params.actorId }, req.body, { new: true }, function (err, actor) {
+          Actor.findOneAndUpdate({ _id: req.params.actorId },
+            req.body, { new: true }, function (err, actor) {
+              if (err) {
+                res.send(err);
+              }
+              else {
+                res.json(actor);
+              }
+            });
+        } else {
+          res.status(403); //Auth error
+          res.send('The Actor is trying to update an Actor that is not himself!');
+        }
+      } else if (actor.role.includes('ADMINISTRATOR')) {
+        Actor.findOneAndUpdate({ _id: req.params.actorId },
+          req.body, { new: true }, function (err, actor) {
             if (err) {
               res.send(err);
             }
@@ -68,19 +85,6 @@ exports.update_an_actor_v2 = function (req, res) {
               res.json(actor);
             }
           });
-        } else {
-          res.status(403); //Auth error
-          res.send('The Actor is trying to update an Actor that is not himself!');
-        }
-      } else if (actor.role.includes('ADMINISTRATOR')) {
-        Actor.findOneAndUpdate({ _id: req.params.actorId }, req.body, { new: true }, function (err, actor) {
-          if (err) {
-            res.send(err);
-          }
-          else {
-            res.json(actor);
-          }
-        });
       } else {
         res.status(405); //Not allowed
         res.send('The Actor has unidentified roles');
@@ -91,8 +95,11 @@ exports.update_an_actor_v2 = function (req, res) {
 
 exports.login_an_actor = async function (req, res) {
   console.log('starting login an actor');
+
   var emailParam = req.query.email;
   var password = req.query.password;
+
+
   Actor.findOne({ email: emailParam }, function (err, actor) {
     if (err) { res.send(err); }
 

@@ -146,6 +146,10 @@ exports.delete_an_trip_witout_app = function (req, res) {
     });
 };
 
+
+
+
+
 exports.change_status_trip = function (req, res) {
 
     var reason = (req.body.cancelled_reason) ? req.body.cancelled_reason : '';

@@ -1,20 +1,20 @@
 'use strict';
-module.exports = function(app) {
-  var dataWareHouse = require('../controllers/dataWareHouseCtrl');
-  var authController = require('../controllers/authCtrl');
+module.exports = function (app) {
+	var dataWareHouse = require('../controllers/dataWareHouseCtrl');
+	var authController = require('../controllers/authCtrl');
 
-  	/**
-	 * Get a list of all indicators or post a new computation period for rebuilding
-	 * Post to rebuild the datawarehouse rebuildPeriod
-	 * RequiredRoles: Administrator
-	 * @section dataWareHouse
-	 * @type get post
-	 * @url v1/dataWareHouse
-	 * @param [string] rebuildPeriod
-	*/
+	/**
+ * Get a list of all indicators or post a new computation period for rebuilding
+ * Post to rebuild the datawarehouse rebuildPeriod
+ * RequiredRoles: Administrator
+ * @section dataWareHouse
+ * @type get post
+ * @url v1/dataWareHouse
+ * @param [string] rebuildPeriod
+*/
 	app.route('/v1/dataWareHouse')
-	.get(dataWareHouse.list_all_indicators)
-	.post(dataWareHouse.rebuildPeriod);
+		.get(dataWareHouse.list_all_indicators)
+		.post(dataWareHouse.rebuildPeriod);
 
 	/**
 	 * Get a list of all indicators or post a new computation period for rebuilding
@@ -26,10 +26,10 @@ module.exports = function(app) {
 	 * @param [string] rebuildPeriod
 	*/
 	app.route('/v2/dataWareHouse')
-	.get(authController.verifyUser(['ADMINISTRATOR']),
-	dataWareHouse.list_all_indicators)
-	.post(authController.verifyUser(['ADMINISTRATOR']),
-	dataWareHouse.rebuildPeriod);
+		.get(authController.verifyUser(['ADMINISTRATOR']),
+			dataWareHouse.list_all_indicators)
+		.post(authController.verifyUser(['ADMINISTRATOR']),
+			dataWareHouse.rebuildPeriod);
 
 	/**
 	 * Get a list of last computed indicator
@@ -39,7 +39,7 @@ module.exports = function(app) {
 	 * @url v1/dataWareHouse/latest
 	*/
 	app.route('/v1/dataWareHouse/latest')
-	.get(dataWareHouse.last_indicator);
+		.get(dataWareHouse.last_indicator);
 
 	/**
 	 * Get a list of last computed indicator
@@ -49,6 +49,5 @@ module.exports = function(app) {
 	 * @url v2/dataWareHouse/latest
 	*/
 	app.route('/v2/dataWareHouse/latest')
-	.get(authController.verifyUser(['ADMINISTRATOR']),
-	dataWareHouse.last_indicator);
+		.get(authController.verifyUser(['ADMINISTRATOR']), dataWareHouse.last_indicator);
 };
