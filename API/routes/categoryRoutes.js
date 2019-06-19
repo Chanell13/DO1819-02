@@ -16,6 +16,16 @@ module.exports = function (app) {
     .get(category.list_all_category)
     .post(category.create_an_category);
 
+  /**
+ * Get an category
+ 
+ * @section category
+ * @type get special
+ * @url /v1/category
+ * @param {string} sortedBy (category)
+*/
+app.route('/v1/category/search')
+.get(category.search_category);
 
   /**
    * Put an category
@@ -26,20 +36,11 @@ module.exports = function (app) {
    */
 
   app.route('/v1/category/:_id')
-    .put(category.update_status_category)
+     .get(category.read_an_category)
+    .put(category.update_category)
     .delete(category.delete_an_category_witout_trip);
 
 
-  /**
- * Get an category
- 
- * @section category
- * @type get special
- * @url /v1/category
- * @param {string} sortedBy (category)
-*/
-  app.route('/v1/category/search')
-    .get(category.search_category);
 
 
 

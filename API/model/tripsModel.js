@@ -59,7 +59,8 @@ var TripSchema = new Schema({
     category: {
         type: mongoose.ObjectId,
         ref: 'Category',
-        required: 'Kindly enter a valid category of trip'
+        required: 'Kindly enter a valid  category of trip'
+        // ,        name: mongoose.ObjectId
     },
     cancelled_reason: {
         type: String

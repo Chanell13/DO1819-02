@@ -18,7 +18,7 @@ exports.create_an_actor = function (req, res) {
     }
   });
 };
-
+//ADMINISTRATOR can get actor
 exports.read_an_actor = function (req, res) {
   Actor.findById(req.params.actorId, function (err, actor) {
     if (err) {
@@ -60,6 +60,7 @@ exports.update_an_actor_v2 = function (req, res) {
       var idToken = req.headers['idtoken'];
       //WE NEED the FireBase custom token in the req.header['idToken']... it is created by FireBase!!
       if (actor.role.includes('EXPLORER') || actor.role.includes('MANAGER') || actor.role.includes('SPONSOR')) {
+       // get the mail thought the id token
         var authenticatedUserId = await authController.getUserId(idToken);
         if (authenticatedUserId == req.params.actorId) {
           Actor.findOneAndUpdate({ _id: req.params.actorId },
@@ -95,11 +96,11 @@ exports.update_an_actor_v2 = function (req, res) {
 
 exports.login_an_actor = async function (req, res) {
   console.log('starting login an actor');
-
+// get email and password that are in the params
   var emailParam = req.query.email;
   var password = req.query.password;
 
-
+// search actor by email in mongo
   Actor.findOne({ email: emailParam }, function (err, actor) {
     if (err) { res.send(err); }
 
@@ -123,13 +124,16 @@ exports.login_an_actor = async function (req, res) {
         }
 
         else {
+          // API REST request to Firebase to Create a customtoken.
           try {
             var customToken = await admin.auth().createCustomToken(actor.email);
           } catch (error) {
             console.log("Error creating custom token:", error);
           }
+          
           actor.customToken = customToken;
           console.log('Login Success... sending JSON with custom token');
+          //Return the actor with the customtoken assigned
           res.json(actor);
         }
       });

@@ -1,15 +1,13 @@
 'use strict';
 //             Category 
 var mongoose = require('mongoose'),
-    Categori = mongoose.model('Categories'),
+    Category = mongoose.model('Categories'),
     Trip = mongoose.model('Trips');
 
-
+//Create Category
 exports.create_an_category = function (req, res) {
-    //Check if the user is an manager and if not: res.status(403); 
-    //"an access token is valid, but requires more privileges"
-    // console.log((req.body));
-    var new_category = new Categori(req.body);
+   
+    var new_category = new Category(req.body);
     new_category.save(function (err, category) {
         if (err) {
             res.send(err);
@@ -20,11 +18,11 @@ exports.create_an_category = function (req, res) {
     });
 };
 
-
+// List all Category
 exports.list_all_category = function (req, res) {
 
 
-    Categori.find(function (err, categories) {
+    Category.find(function (err, categories) {
         if (err) {
             res.send(err);
         }
@@ -34,8 +32,19 @@ exports.list_all_category = function (req, res) {
     });
 };
 
+// Read an category
+exports.read_an_category = function (req, res) {
+    Category.findById(req.params._id, function (err, actor) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      else {
+        res.json(actor);
+      }
+    });
+  };
 
-
+// Delete withoutrip
 exports.delete_an_category_witout_trip = function (req, res) {
     console.log(req.params);
 
@@ -67,7 +76,7 @@ exports.delete_an_category_witout_trip = function (req, res) {
                     ]
                 };
 
-                Categori.deleteOne(querydelete, function (err, category) {
+                Category.deleteOne(querydelete, function (err, category) {
                     if (err) {
                         res.send(err);
                     }
@@ -89,10 +98,10 @@ exports.delete_an_category_witout_trip = function (req, res) {
 };
 
 
+// Update category
+exports.update_category = function (req, res) {
 
-exports.update_status_category = function (req, res) {
-
-    Categori.findOneAndUpdate(
+    Category.findOneAndUpdate(
         { _id: req.params._id },
         req.body,
         { new: true },
@@ -139,16 +148,16 @@ exports.search_category = (req, res) => {
         }
     }
 
-    Categori.find(keyWordQuery)
+    Category.find(keyWordQuery)
         .skip(skip)
         .limit(limit)
         .sort(sort)
         .lean()
-        .exec((err, trip) => {
+        .exec((err, categories) => {
             if (err) {
                 res.send(err);
             } else {
-                res.send(trip);
+                res.send(categories);
             }
         });
 

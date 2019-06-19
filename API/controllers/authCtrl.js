@@ -1,9 +1,12 @@
 'use strict';
 //                    ACTOR Auth 
+
+
 var mongoose = require('mongoose'),
   Actor = mongoose.model('Actors'),
   admin = require('firebase-admin');
 
+  // Search email in idtoken
 exports.getUserId = async function (idToken) {
   console.log('idToken: ' + idToken);
   var id = null;
@@ -28,11 +31,13 @@ exports.getUserId = async function (idToken) {
   }
 }
 
-
+// Verificar user with email just with token id
 exports.verifyUser = function (requiredRoles) {
+
   return function (req, res, callback) {
     console.log('starting verifying idToken');
     console.log('requiredRoles: ' + requiredRoles);
+    //Consulta el id token
     var idToken = req.headers['idtoken'];
     console.log('idToken: ' + idToken);
 
@@ -45,7 +50,7 @@ exports.verifyUser = function (requiredRoles) {
       console.log('idToken verificado para el uid: ' + uid);
       console.log('auth_time: ' + auth_time);
       console.log('exp: ' + exp);
-
+  // The correct role 
       Actor.findOne({ email: uid }, function (err, actor) {
         if (err) { res.send(err); }
 

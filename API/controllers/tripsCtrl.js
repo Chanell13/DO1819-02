@@ -183,10 +183,10 @@ exports.search_trips = (req, res) => {
     // console.log(req.query); 
     // /v1/trips/search?q=viaje&sortedBy=created&reverse=true&pageSize=3&startFrom=3
     var keyWordQuery = {};
-
     if (req.query.q) {
         keyWordQuery.$text = { $search: req.query.q };
     }
+   // if (req.query.category){}
 
     var skip = 0;
     if (req.query.startFrom) {

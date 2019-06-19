@@ -8,7 +8,7 @@ var CategorySchema = new Schema({
 
     name: {
         type: String,
-        required: 'Kindly enter the title of the Category'
+        required: 'Kindly enter the name of the Category'
     },
     description: {
         type: String,
