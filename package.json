@@ -27,7 +27,7 @@
     "express": "^4.16.4",
     "firebase-admin": "^7.1.0",
     "moment": "^2.24.0",
-    "mongoose": "^5.4.13",
+    "mongoose": "^5.7.5",
     "nanoid": "^2.0.1",
     "request": "^2.88.0",
     "stream-to-mongo-db": "^1.6.0"
