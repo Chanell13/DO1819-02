@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/bluecloudus/ACME-EXPLORER-BC#readme",
   "dependencies": {
-    "async": "^2.6.2",
+    "async": "^2.6.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cron": "^1.6.0",
